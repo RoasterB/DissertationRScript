@@ -189,7 +189,9 @@ base_data %>%
                  lapply(function(x) gpar(fill = x, col = "#555555")),
                default = gpar(vertices = TRUE))%>%
   fp_decorate_graph(grid = structure(1))
-
+# Predicted probs
+predp<-emmeans(urgencyall_relationship,~ Ethnicity, type = 'response')
+predp
 #Survival analysis
 table(nomissing$Ethnicity,nomissing$Dischargedunder18)
 
@@ -274,3 +276,4 @@ final_plot <- ggadjustedcurves(
   title = 'Cox Proportional Hazards Model: Adjusted Survival Estimates by Ethnicity'
 ) + theme_minimal()
 final_plot
+
